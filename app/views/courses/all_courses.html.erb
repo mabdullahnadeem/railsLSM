@@ -1,0 +1,8 @@
+<% @courses.each do |course|%>
+  <ul>
+    <li>
+      <%= course.name %>
+      <%= link_to 'Enroll', new_student_enrollment_path(:student_id => current_user.id, :id => course.id), method: :put %>
+    </li>
+  </ul>
+<%end%>

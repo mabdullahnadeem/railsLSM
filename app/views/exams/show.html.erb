@@ -1,0 +1,14 @@
+<%=@exam.exam_name%>
+
+<br>
+<br>
+<% @exam.questions.each_with_index do |question, index|%>
+  <div>
+    Q<%= index+1%>:
+    <%= question.title%>
+    <%= form_for :answer do |f|%>
+      Answer: <%= f.text_field :body%>
+      <%= f.submit%>
+    <%end%>
+  </div>
+<%end%>
