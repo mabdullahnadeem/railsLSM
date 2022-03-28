@@ -1,0 +1,9 @@
+Hello you are in <%= @course.name%> class.
+Total Marks <%= @course.total_marks%>
+
+<% if @course.exam %>
+  <%= link_to 'View Test', course_exam_path(:course_id => @course.id, :id => @course.exam.id)%>
+<% else %>
+  <p>No Exam Found for this course</p>
+  <%= link_to 'Create Test', new_course_exam_path(:course_id => @course.id) if policy(current_user).new?%>
+<% end %>

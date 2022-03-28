@@ -1,0 +1,19 @@
+<% if user_signed_in? %>
+    <h3>Hello, Mr <%= current_user.name%></h3>
+    <p>
+      you are signed in as
+      [<%= current_user.role.role%>] from account
+      <%= current_user.email%>
+    </p>
+  <% else %>
+    <div class='home-card'>
+      <div class='home-button-div'>
+        <div class='home-button-sign-in'>
+          <%= link_to 'Sign in', user_session_path, class: 'link-text'%>
+        </div>
+        <div class='home-button-sign-up'>
+          <%= link_to 'Sign up', new_user_registration_path, class: 'link-text'%>
+        </div>
+      </div>
+    </div>
+<% end %>

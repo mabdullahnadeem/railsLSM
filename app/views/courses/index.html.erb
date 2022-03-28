@@ -1,0 +1,13 @@
+Classes
+
+<% @courses.each do |course|%>
+  <ul>
+    <li>
+      <%=link_to course.name, student_course_path(:id => course.id)%>
+    </li>
+  </ul>
+<%end%>
+
+<%= link_to 'Create Course', new_student_course_path if policy(@user).new?%>
+<%= link_to 'Home Page', root_path%>
+

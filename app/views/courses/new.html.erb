@@ -1,0 +1,11 @@
+<h3> New Course </h3>
+
+<%= form_for :course do |f| %>
+  Course Name: <%= f.text_field :name%>
+  Total Marks: <%= f.text_field :total_marks%>
+
+  <%= f.submit%>
+<% end %>
+
+<%= link_to 'My Classes', student_courses_path(:student_id => current_user.id)%>
+

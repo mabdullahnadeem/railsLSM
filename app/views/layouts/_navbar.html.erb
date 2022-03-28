@@ -1,0 +1,26 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Student LMS</a>
+    </div>
+    <% if user_signed_in?%>
+      <ul class="nav navbar-nav">
+        <li>
+          <%= link_to 'All Users', students_path if policy(current_user).index?%>
+        </li>
+
+        <li>
+          <%= link_to 'All Classes', all_courses_path%>
+        </li>
+
+        <li>
+          <%= link_to 'My Classes', student_courses_path(:student_id => current_user.id)%>
+        </li>
+
+        <li>
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+        </li>
+      </ul>
+    <%end%>
+  </div>
+</nav>
