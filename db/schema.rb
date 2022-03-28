@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_28_082627) do
+ActiveRecord::Schema.define(version: 2022_03_28_114816) do
 
   create_table "answers", force: :cascade do |t|
     t.string "body"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2022_03_28_082627) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "questions_id"
+    t.float "total_marks"
     t.index ["course_id"], name: "index_exams_on_course_id"
     t.index ["questions_id"], name: "index_exams_on_questions_id"
   end

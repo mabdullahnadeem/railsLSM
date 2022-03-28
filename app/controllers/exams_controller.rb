@@ -5,7 +5,7 @@ class ExamsController < ApplicationController
   end
 
   def create
-    @course = Course.find_by(exam_params)
+    @course = Course.find_by(id: exam_params)
     @question = @course.exam.questions.new(title: question_params)
     if @question.save
       redirect_to new_course_exam_path
@@ -15,7 +15,11 @@ class ExamsController < ApplicationController
   end
 
   def new
-    @course = Course.find_by(exam_params)
+    @course = Course.find_by(id: exam_params)
+    if(@course.exam.nil?)
+      @exam = Exam.create(course_id: @course.id, exam_name: @course.name)
+    end
+    @course = Course.find_by(id: exam_params) #reassign to get course's exam attribute
     @questions = @course.exam.questions
   end
 

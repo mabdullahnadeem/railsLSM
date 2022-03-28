@@ -19,4 +19,4 @@ Questions:
   </div>
 <%end%>
 
-<%= link_to @course.name, student_course_path%>
+<%= link_to @course.name, student_course_path(:student_id => current_user.id, :id => @course.id)%>
