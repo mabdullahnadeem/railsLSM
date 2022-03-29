@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Course < ApplicationRecord
   has_one :exam, dependent: :destroy
   has_many :user_courses

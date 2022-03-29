@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AnswersController < ApplicationController
   def new
     @user = User.find_by(user_permit_params)

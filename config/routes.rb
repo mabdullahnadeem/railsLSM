@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions'
@@ -8,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :courses do
+    # get all_courses, on: :collection, :member
     resources :exams
   end
 

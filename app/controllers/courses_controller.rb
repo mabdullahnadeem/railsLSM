@@ -1,12 +1,13 @@
+# frozen_string_literal: true
+
 class CoursesController < ApplicationController
+  before_action :user_getter, only: %i[index create new]
   def index
-    @user = User.find(params[:student_id])
     @courses = @user.courses
     redirect_to root_path unless @courses
   end
 
   def create
-    @user = User.find(params[:student_id])
     @user.courses.new(course_params)
     if @user.save
       redirect_to student_courses_path
@@ -20,7 +21,6 @@ class CoursesController < ApplicationController
   end
 
   def new
-    @user = User.find(params[:student_id])
     authorize @user
   end
 
@@ -40,6 +40,11 @@ class CoursesController < ApplicationController
   end
 
   private
+
+  def user_getter
+    @user = current_user
+    # @user = User.find(params[:student_id])
+  end
 
   def course_params
     params.require(:course).permit(:name, :total_marks)
