@@ -19,6 +19,6 @@ class UserPolicy < ApplicationPolicy
   private
 
   def user_role_is_teacher?
-    @user.role.role == 'teacher'
+    @user.role_status == 'teacher'
   end
 end
