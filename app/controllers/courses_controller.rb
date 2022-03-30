@@ -10,13 +10,13 @@ class CoursesController < ApplicationController
   def create
     @user.courses.new(course_params)
     if @user.save
-      redirect_to student_courses_path
+      redirect_to user_courses_path(user_id: current_user.id)
     else
-      redirect_to new_student_course_path
+      redirect_to new_user_course_path(user_id: current_user.id)
     end
   end
 
-  def all_courses
+  def all
     @all_courses = Course.paginate(page: params[:page], per_page: 10)
     @current_user_courses = current_user&.courses
     @courses_user_can_enroll = @all_courses - @current_user_courses
@@ -49,6 +49,6 @@ class CoursesController < ApplicationController
   end
 
   def course_params
-    params.require(:course).permit(:name, :total_marks)
+    params.require(:course).permit(:name)
   end
 end

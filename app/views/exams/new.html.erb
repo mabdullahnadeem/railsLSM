@@ -1,7 +1,7 @@
 Create <%= @course.name%> Exam Paper.
 
 <div>
-  <%= form_for :question do |f| %>
+  <%= form_for :question, url: "/courses/#{@course.id}/exams", method: :post do |f| %>
     Title: <%= f.text_field :title%>
     <%= f.submit%>
   <% end %>
@@ -19,4 +19,4 @@ Questions:
   </div>
 <%end%>
 
-<%= link_to @course.name, student_course_path(:student_id => current_user.id, :id => @course.id)%>
+<%= link_to @course.name, user_course_path(:user_id => current_user.id, :id => @course.id)%>

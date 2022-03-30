@@ -12,7 +12,7 @@
         </td>
         <td class='course-table-data'>
           <button class='enroll-button'>
-            <%= link_to 'Enroll', new_student_enrollment_path(:student_id => current_user.id, :id => course.id), method: :put %>
+            <%= link_to 'Enroll', "/user/#{current_user.id}/courses/#{course.id}", method: :put %>
           </button>
         </td>
       </tr>
