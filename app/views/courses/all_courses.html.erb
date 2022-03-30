@@ -1,8 +1,36 @@
-<% @courses.each do |course|%>
-  <ul>
-    <li>
-      <%= course.name %>
-      <%= link_to 'Enroll', new_student_enrollment_path(:student_id => current_user.id, :id => course.id), method: :put %>
-    </li>
-  </ul>
-<%end%>
+<div class='course-div-centerlized'>
+  <table class='courses-table'>
+    <tr>
+      <th class='course-table-heading'>course</th>
+      <th class='course-table-heading'>action</th>
+    </tr>
+    <% @courses_user_can_enroll.each do |course|%>
+
+      <tr>
+        <td class='course-table-data'>
+          <%= course.name %>
+        </td>
+        <td class='course-table-data'>
+          <button class='enroll-button'>
+            <%= link_to 'Enroll', new_student_enrollment_path(:student_id => current_user.id, :id => course.id), method: :put %>
+          </button>
+        </td>
+      </tr>
+    <%end%>
+    <% @current_user_courses.each do |course|%>
+      <tr>
+        <td class='course-enrolled-table-data'>
+          <%= course.name %>
+        </td>
+        <td class='course-enrolled-table-data'>
+          <p>Enrolled</p>
+        </td>
+      </tr>
+    <%end%>
+  </table>
+</div>
+
+<div>
+  <%= will_paginate @all_courses %>
+</div>
+

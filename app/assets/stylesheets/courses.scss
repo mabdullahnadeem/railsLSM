@@ -1,3 +1,40 @@
 // Place all the styles related to the Courses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.enroll-button {
+  background-color: lightsteelblue;
+  border: none;
+  border-radius: 5px;
+
+  a {
+    color: dodgerblue;
+  }
+}
+
+.courses-table {
+  border-collapse: collapse;
+  width: 40%;
+}
+
+.course-table-heading {
+  font-size: 22px;
+}
+
+.course-table-data {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 18px;
+}
+
+.course-enrolled-table-data {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 18px;
+  background-color: #9aff00a6;
+}
+
+.course-div-centerlized {
+  display: flex;
+  justify-content: center;
+}

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_29_094501) do
+ActiveRecord::Schema.define(version: 2022_03_29_110901) do
 
   create_table "answers", force: :cascade do |t|
     t.string "body"
@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 2022_03_29_094501) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
-    t.float "total_marks"
     t.index ["users_id"], name: "index_courses_on_users_id"
   end
 

@@ -17,7 +17,9 @@ class CoursesController < ApplicationController
   end
 
   def all_courses
-    @courses = Course.all
+    @all_courses = Course.paginate(page: params[:page], per_page: 10)
+    @current_user_courses = current_user&.courses
+    @courses_user_can_enroll = @all_courses - @current_user_courses
   end
 
   def new
@@ -26,14 +28,14 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
+    @exam = @course&.exam
   end
 
   def update
     @course = Course.find_by(id: params[:id])
-    @course_enrollment = @course.user_courses.new(user_id: params[:student_id], course_id: params[:id])
-
+    @course_enrollment = @course.user_courses.new(user_id: params[:user_id], course_id: params[:id])
     if @course_enrollment.save
-      redirect_to student_courses_path
+      redirect_to user_courses_path
     else
       redirect_to 'All Classes'
     end
