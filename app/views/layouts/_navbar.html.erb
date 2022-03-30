@@ -6,7 +6,7 @@
     <% if user_signed_in?%>
       <ul class="nav navbar-nav">
         <li>
-          <%= link_to 'All Users', students_path if policy(current_user).index?%>
+          <%= link_to 'All Users', user_index_path if policy(current_user).index?%>
         </li>
 
         <li>
@@ -14,7 +14,7 @@
         </li>
 
         <li>
-          <%= link_to 'My Classes', student_courses_path(:student_id => current_user.id)%>
+          <%= link_to 'My Classes', user_courses_path(:user_id => current_user.id)%>
         </li>
 
         <li>

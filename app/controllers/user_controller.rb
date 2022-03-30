@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class StudentsController < ApplicationController
+class UserController < ApplicationController
   def index
     authorize current_user
     @users = User.all

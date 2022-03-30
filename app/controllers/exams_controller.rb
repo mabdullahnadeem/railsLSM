@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class ExamsController < ApplicationController
   before_action :course_find_by_id
   def show
@@ -8,15 +6,17 @@ class ExamsController < ApplicationController
 
   def create
     @question = @course.exam.questions.new(title: question_params)
-    if @question.save
+    if @question&.save
+      redirect_to new_course_exam_path
+    else
+      redirect_to root_path
     end
-    redirect_to new_course_exam_path
   end
 
   def new
-    @exam = Exam.create(course_id: @course.id, exam_name: @course.name) if @course.exam.nil?
+    @exam = Exam.create(course_id: @course.id, exam_name: @course.name) unless @course.exam.present?
     @course = Course.find_by(id: exam_params) # reassign to get course's exam attribute
-    @questions = @course.exam.questions
+    @questions = @course.exam&.questions
   end
 
   private
