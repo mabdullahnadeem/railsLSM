@@ -10,13 +10,13 @@
         Q<%= index+1%>:
         <%= question.title%>
       </div>
-      <%= form_for :answer, url: "/courses/#{@course.id}/exams/#{@exam.id}&#{question.id}&#{current_user.id}", method: 'post' do |f|%>
-        <% if question.answer.nil? %>
+      <%= form_for :answers, url: "/courses/#{@course.id}/exams/#{@exam.id}&#{question.id}&#{current_user.id}", method: 'post' do |f|%>
+        <% if @answer_by_user_to_questions[index].nil? %>
           Answer: <%= f.text_field :body%>
           <%= f.submit%>
         <% else %>
-          Answer: <%= question.answer.body%>
-        <% end%>
+          Answer: <%= @answer_by_user_to_questions[index].body%>
+        <% end %>
       <%end%>
     </div>
   <%end%>
