@@ -35,10 +35,15 @@ class CoursesController < ApplicationController
     @course = Course.find_by(id: params[:id])
     @course_enrollment = @course.user_courses.new(user_id: params[:user_id], course_id: params[:id])
     if @course_enrollment.save
+      flash[:notice] = 'Enrolled!'
       redirect_to user_courses_path
     else
       redirect_to 'All Classes'
     end
+  end
+
+  def destroy
+    UserCourse.where(user_id: current_user.id, course_id: course_params_id).destroy_all
   end
 
   private
@@ -50,5 +55,9 @@ class CoursesController < ApplicationController
 
   def course_params
     params.require(:course).permit(:name)
+  end
+
+  def course_params_id
+    params.require(:id)
   end
 end

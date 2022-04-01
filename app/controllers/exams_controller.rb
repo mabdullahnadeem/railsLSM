@@ -7,15 +7,14 @@ class ExamsController < ApplicationController
   end
 
   def create
-    unless @course.exam.present?
+    unless @exam = @course.exam.presence
       @exam = Exam.create(course_id: @course.id, exam_name: @course.name,
                           user_id: current_user.id)
     end
-    @question = @course.exam.questions.new(title: question_params)
-    if @question&.save
-      redirect_to new_course_exam_path
-    else
-      redirect_to root_path
+    @question = @exam.questions.create(title: question_params)
+    @index = @exam.questions.count
+    respond_to do |format|
+      format.js { render layout: false, content_type: 'text/javascript' }
     end
   end
 

@@ -9,6 +9,16 @@ class CoursePolicy < ApplicationPolicy
   end
 
   def new?
+    user_status
+  end
+
+  def edit?
+    user_status
+  end
+
+  private
+
+  def user_status
     @user.role_status == 'teacher'
   end
 end

@@ -5,27 +5,32 @@
       <th class='course-table-heading'>action</th>
     </tr>
     <% @courses_user_can_enroll.each do |course|%>
-
-      <tr>
-        <td class='course-table-data'>
-          <%= course.name %>
-        </td>
-        <td class='course-table-data'>
-          <button class='enroll-button'>
-            <%= link_to 'Enroll', "/user/#{current_user.id}/courses/#{course.id}", method: :put %>
-          </button>
-        </td>
-      </tr>
+      <div>
+        <tr>
+          <td class='course-table-data'>
+            <%= course.name %>
+          </td>
+          <td class='course-table-data'>
+            <button class='enroll-button'>
+              <%= link_to 'Enroll', "/user/#{current_user.id}/courses/#{course.id}", method: :put %>
+            </button>
+          </td>
+        </tr>
+      </div>
     <%end%>
     <% @current_user_courses.each do |course|%>
-      <tr>
-        <td class='course-enrolled-table-data'>
-          <%= course.name %>
-        </td>
-        <td class='course-enrolled-table-data'>
-          <p>Enrolled</p>
-        </td>
-      </tr>
+      <div>
+        <tr>
+          <td class='course-enrolled-table-data'>
+            <%= course.name %>
+          </td>
+          <td class='course-enrolled-table-data'>
+            <button class='unenroll-button'>
+              <%= link_to 'Unenroll', "/user/#{current_user.id}/courses/#{course.id}", method: :delete %>
+            </button>
+          </td>
+        </tr>
+      </div>
     <%end%>
   </table>
 </div>

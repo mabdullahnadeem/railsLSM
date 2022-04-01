@@ -12,6 +12,16 @@
   }
 }
 
+.unenroll-button {
+  background-color: rgb(255, 44, 44);
+  border: none;
+  border-radius: 5px;
+
+  a {
+    color: white;
+  }
+}
+
 .courses-table {
   border-collapse: collapse;
   width: 40%;
@@ -31,7 +41,7 @@
   padding-top: 5px;
   padding-bottom: 5px;
   font-size: 18px;
-  background-color: #9aff00a6;
+  background-color: #2dff5058;
 }
 
 .course-div-centerlized {
