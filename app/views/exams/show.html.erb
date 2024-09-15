@@ -1,0 +1,18 @@
+<%=@exam.exam_name%> Exam
+
+<br>
+<br>
+<% @exam.questions.each_with_index do |question, index|%>
+  <div>
+    Q<%= index+1%>:
+    <%= question.title%>
+    <%= form_for :answer, url: "/courses/#{@course.id}/exams/#{@exam.id}&#{question.id}&#{current_user.id}", method: 'post' do |f|%>
+      <% if question.answer.nil? %>
+        Answer: <%= f.text_field :body%>
+        <%= f.submit%>
+      <% else %>
+        Answer: <%= question.answer.body%>
+      <% end%>
+    <%end%>
+  </div>
+<%end%>

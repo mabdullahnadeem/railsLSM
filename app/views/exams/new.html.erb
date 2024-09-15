@@ -1,0 +1,22 @@
+Create <%= @course.name%> Exam Paper.
+
+<div>
+  <%= form_for :question do |f| %>
+    Title: <%= f.text_field :title%>
+    <%= f.submit%>
+  <% end %>
+</div>
+<br>
+Questions:
+  <div>
+    <% if @questions %>
+      <% @questions.each_with_index do |question, index|%>
+       <div>
+        Q<%= index + 1%>:
+        <%= question.title%>
+      </div>
+      <%end%>
+  </div>
+<%end%>
+
+<%= link_to @course.name, student_course_path(:student_id => current_user.id, :id => @course.id)%>
