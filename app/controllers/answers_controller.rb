@@ -2,10 +2,10 @@
 
 class AnswersController < ApplicationController
   def new
-    @user = User.find_by(user_permit_params)
+    @user = User.find_by(id: user_permit_params)
     @course = @user.courses.find_by(id: course_permit_params)
     @question_answered = @course.exam.questions.find_by(id: question_permit_params)
-    @answer = Answer.new(body: answer_permit_params, question_id: @question_answered.id)
+    @answer = Answer.new(body: answer_permit_params, question_id: @question_answered.id, user_id: @user.id)
     @answer.save
   end
 
@@ -24,6 +24,6 @@ class AnswersController < ApplicationController
   end
 
   def answer_permit_params
-    params.require(:answer).require(:body)
+    params.require(:answers).require(:body)
   end
 end

@@ -1,0 +1,33 @@
+<div>
+  <div class='heading-font main-div'>
+    Total Number of Users : <%= @users.size%>
+  </div>
+
+  <br>
+  <br>
+
+  <div class='user-div-centerlized'>
+    <table class='users-table'>
+      <tr>
+        <th class='user-table-heading'> Name </th>
+        <th class='user-table-heading'> Email </th>
+        <th class='user-table-heading'> Role </th>
+      </tr>
+      <tr>
+        <% @users.each do |user|%>
+          <tr>
+            <td class='user-table-data'>
+              <%= user.name%>
+            </td>
+            <td class='user-table-data'>
+              <%= user.email%>
+            </td>
+            <td class='user-role-table-data'>
+              <%= user.role_status%>
+            </td>
+          </tr>
+        <%end%>
+      </tr>
+    </table>
+  </div>
+</div>

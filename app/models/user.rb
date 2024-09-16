@@ -5,8 +5,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   enum role_status: %i[teacher student]
   validates :role_status, presence: true
+  has_one :exam
   has_many :user_courses
   has_many :courses, through: :user_courses, dependent: :destroy
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :confirmable
 end
